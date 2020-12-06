@@ -2,7 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 const ToDoList= ()=>(
-    <React.Fragment>
+    <>
      <h1 className="m-3">Liste de tâches</h1>
 <ul className="list-group-item m-3">
     <li className="list-group-item d-flex align-items-center">Ranger La vaisselle
@@ -18,7 +18,7 @@ const ToDoList= ()=>(
         <button className="btn btn-sm ml-auto btn-outline-success">&#x2713;</button>
     </li>
 </ul>
-</React.Fragment>
+</>
 );
 
 export default ToDoList;
