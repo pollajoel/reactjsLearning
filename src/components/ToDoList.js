@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-const ToDoList= ()=>(
+const ToDoList= ({tasks})=>(
     <>
      <h1 className="m-3">Liste de tâches</h1>
 <ul className="list-group-item m-3">
