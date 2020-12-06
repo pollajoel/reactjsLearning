@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>La syntaxe React</title>
+    <script src="https://unpkg.com/react@16.7.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.7.0/umd/react-dom.development.js"></script>
+    <script src="babel.js"></script>
+<style>
+
+.Back{background-color:red;}
+
+</style>
+
+</head>
+<body>
+<div id="react_root"></div>
+
+<script type="text/babel">
+
+class Bonjour extends React.Component{
+constructor(props){
+    super(props)
+
+    this.state ={
+        name:"Damien"
+    }
+    this.HandleChange=this.HandleChange.bind(this);
+}
+
+HandleChange(e){
+    this.setState(
+        {
+            name:e.target.value,
+        }
+    )
+}
+
+render(){
+return(
+    <div className="Back">
+        <h1>Bonjour et Bienvenu sur cette Page {this.props.message}</h1>
+        <p>Mon premier composant React Native</p>
+        <p>Vous apprenez la version {this.props.version} de React {this.state.name}</p>
+        <p><input type="text" value={this.state.name} onChange={this.HandleChange}/></p>
+    </div>
+    )
+}
+}
+
+
+const Bonjour2 = ()=>(<div>
+            <h1>Bonjour de React</h1>
+            <p> Je suis un paragraphe React Native</p>
+            
+            </div>)
+
+//genérer à l'écran
+ReactDOM.render(
+<Bonjour message="<<Message de Teguia Polla joel>>" version={12}>
+    <p>Vous apprenez la version</p>
+    </Bonjour>,
+document.getElementById('react_root')
+);
+</script>
+    
+</body>
+</html>
