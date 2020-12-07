@@ -10,7 +10,9 @@ class AddTask extends React.Component{
                 <form className="card-body" onSubmit={(e)=>this.handleSubmit(e)}>
                   <div className ="form-group">
                     <label className="taskName">Nom de la tâche</label>
-                    <input type="text" className="form-control" name="taskName"/>
+                    <input type="text" className="form-control" name="taskName"
+                    id="taskName" required ref={input=>this.newTask=input}
+                    />
                   </div>
                   <button type="submit" className="btn btn-primary">Créer</button>
                 </form>
@@ -18,7 +20,10 @@ class AddTask extends React.Component{
 
         </section>);
     }
-    handleSubmit(e){}
+    handleSubmit(e){
+      e.preventDefault();
+      alert( this.newTask.value);
+    }
 }
 
 export default AddTask;

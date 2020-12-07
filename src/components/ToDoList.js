@@ -2,7 +2,7 @@ import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Todo from "./Todo"
 
-const ToDoList= ({taches,match})=>{
+const ToDoList= ({taches,match,onToggleCompleted})=>{
 let filteredtasks
 switch (match.params.filter) {
     case 'completed':
@@ -12,7 +12,7 @@ switch (match.params.filter) {
             filteredtasks=taches
         break;
 }
-if( filteredtasks.length==0)
+if( filteredtasks.length===0)
 {
    return(
        <>
@@ -30,7 +30,7 @@ return(
      <h1 className="m-3">Liste de tâches</h1>
 <ul className="list-group-item m-3">
     {
-        filteredtasks.map((tache)=><Todo task={tache} key={tache.id}/>)
+        filteredtasks.map((tache)=><Todo task={tache} key={tache.id} onToggleCompleted={onToggleCompleted}/>)
         
     }
 </ul>
