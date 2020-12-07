@@ -5,6 +5,7 @@ import Navbar from "./Navbar"
 import AddTask from "./AddTask"
 import {BrowserRouter,Switch,Route} from 'react-router-dom'
 import initialData from "../initialData"
+import uniqueid from 'uniqueid'
 
 class App extends React.Component{
 
@@ -24,20 +25,34 @@ class App extends React.Component{
     }
     onAddTask=(NewtaskName)=>{
         let newTask={
-            id:
+            id:uniqueid(),
+            name:NewtaskName,
+            completed:false,
         }
-    }
 
+        this.setState(prevstate=>({
+            tache:[...prevstate.tache,newTask]
+
+        })
+        )
+    }
+OndeleteCompleted=()=>{
+    this.setState(prevstate =>{
+        let newstate =prevstate.tache.filter(task=>!task.completed)
+
+        return { tache: newstate }
+    } )
+}
 
     render(){
       return(
         <section id="todo">
             <BrowserRouter>
                 <Switch>
-                    <Route path="/add-task" component={AddTask}></Route>
+                    <Route path="/add-task" render={(props)=><AddTask{...props} onAddTask={this.onAddTask}/>}></Route>
                     <Route path="/:filter?" render={(props)=> <ToDoList{...props} taches={this.state.tache} onToggleCompleted={this.onToggleCompleted}/> }></Route>
                 </Switch>
-                <Navbar></Navbar>
+                <Navbar OndeleteCompleted={this.OndeleteCompleted}/>
             </BrowserRouter>
           
                  </section>
